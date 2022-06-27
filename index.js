@@ -24,7 +24,7 @@ app.get("/", (request, response) => {
 
 //spotify access token 
 
-getAudioFeatures_Track()
+// getAudioFeatures_Track()
 
 //Database Connection
 db.authenticate().then(() => {

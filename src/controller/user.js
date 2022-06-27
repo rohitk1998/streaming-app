@@ -18,9 +18,11 @@ var userController = {
 
 async function addNewUser(req, res) {
   let user = req.body;
+  console.log("req.body.user ::",user);
   userdao
     .create(user)
     .then((data) => {
+      console.log("data",data);
       res.send({
         status: 201,
         message: "User created successfully",
@@ -28,22 +30,29 @@ async function addNewUser(req, res) {
           id: data.id,
           username: data.username,
           email: data.email,
-          user_profile: data.user_profile,
+          profile: data.profile,
+          contact: data.contact,
+          bio: data.bio,
           device_token: data.device_token,
           device_type: data.device_type,
-          user_type: data.user_type,
-          created_At: data.createdAt,
-          updated_At: data.updatedAt,
+          type: data.type,
+          updatedAt: data.createdAt,
+          createdAt: data.updatedAt,
+          remember_token: data.remember_token,
+          notifications: data.notifications
+      
         },
         error: false,
       });
     })
     .catch((error) => {
       console.log("error", error);
-      // res.send({
-      //   errorField: error.name,
-      //   error_message: error?.errors[0]?.message,
-      // });
+     if(error){
+        res.send({
+        errorField: error.name,
+        error_message: error?.errors[0]?.message,
+      });
+     }
     });
 }
 
@@ -97,7 +106,7 @@ function updateUser(req, res) {
             id: data[1]?.id,
             username: data[1]?.username,
             email: data[1]?.email,
-            user_profile: data[1]?.user_profile,
+            profile: data[1]?.profile,
             device_token: data[1]?.device_token,
             device_type: data[1]?.device_type,
             createdAt: data[1]?.createdAt,

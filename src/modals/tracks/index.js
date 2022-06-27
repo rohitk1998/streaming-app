@@ -1,37 +1,53 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const db = require("../../config/db")
 
-const Tracks = db.define('Tracks', {
-  // Model attributes are defined here
-  track_id: {
-    type: DataTypes.INTEGER,
-    autoIncrement: true,
+const Tracks = db.define('tracks', {
+  id: {
+    type: DataTypes.STRING,
     primaryKey: true
   },
-  track_title: {
+  name: {
     type: DataTypes.STRING,
     allowNull: false,
-    unique : true 
   },
-  track_path : {
-    type: DataTypes.STRING,
-    unique : true ,
-    // allowNull defaults to true
+  allbum : {
+    type: DataTypes.JSON,
   },
-  artist_name : {
-    type: DataTypes.STRING,
+  artist : {
+    type: DataTypes.ARRAY(DataTypes.JSON),
   },
-  artist_id : {
-    type: DataTypes.STRING,
-  },
-  year : {
+  avialable_market : {
     type : DataTypes.STRING
+  },
+  duration : {
+    type : DataTypes.BIGINT
+  },
+  external_urls:{
+    type : DataTypes.ARRAY(DataTypes.JSON)
+  },
+  is_local : {
+    type : DataTypes.BOOLEAN
+  },
+  popularity : {
+    type : DataTypes.BIGINT
+  },
+  preview_url  : {
+    type : DataTypes.STRING
+  },
+  number : {
+    type : DataTypes.BIGINT
+  },
+  type : {
+    type : DataTypes.STRING
+  },
+  uri : {
+    type: DataTypes.STRING,
+    unique : true
   }
 }, {
-  // Other model options go here
   timestamps : true  , 
 } , { tableName  : "tracks" });
 
-db.sync({ alter: true })
+// db.sync({ alter: true })
 
 module.exports = Tracks ; 

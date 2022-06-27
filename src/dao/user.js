@@ -35,32 +35,29 @@ function deleteById(id) {
 
 async function createUser(user) {
   const salt = await bcrypt.genSalt(10);
-  var token = randomToken(13);
+  var user_id = randomToken(12);
+  var device_token_ = randomToken(15);
   var new_user = {
-    id: token,
+    id:user_id,
     username: user.username,
     email: user.email,
     password: await bcrypt.hash(user.password, salt),
-    user_profile: user.user_profile,
-    device_token: user.device_token,
+    profile: user.profile,
+    contact:user.contact,
+    bio:user.bio,
+    device_token: device_token_,
     device_type: user.device_type,
-    user_type: user.user_type,
+    type: user.type,
   };
   var newUser = new User(new_user);
-  return newUser.save({
-    attributes: {
-      exclude: ["password"],
-    },
-    returning: true,
-    plain: true,
-  });
+  return await newUser.save();
 }
 
 function updateUser(user, id) {
   var updateUser = {
     username: user.username,
     email: user.email,
-    user_profile: user.user_profile,
+    profile: user.profile,
     device_token: user.device_token,
     device_type: user.device_type,
   };
@@ -88,7 +85,7 @@ async function loginUser(email, password) {
           id: user?.id,
           username: user?.username,
           email: user?.email,
-          user_profile: user?.user_profile,
+          profile: user?.profile,
           device_token: user?.device_token,
           device_type: user?.device_type,
           createdAt: user?.createdAt,
