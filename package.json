@@ -1,0 +1,42 @@
+{
+  "name": "user-registration",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@hack0x90/soundcloud-dl": "^1.0.5",
+    "axios": "^0.27.2",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.17.3",
+    "fs": "^0.0.1-security",
+    "multer": "^1.4.5-lts.1",
+    "node-fetch": "^3.2.6",
+    "node-html-parser": "^5.3.3",
+    "nodemailer": "^6.6.3",
+    "pg": "^8.7.3",
+    "qs": "^6.10.5",
+    "querystring": "^0.2.1",
+    "random-token": "^0.0.8",
+    "sequelize": "^6.19.0",
+    "spdl-core": "^2.0.2",
+    "spotify-web-api-node": "^5.0.2",
+    "sqlite3": "^5.0.8"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "@babel/node": "^7.15.4",
+    "@babel/preset-env": "^7.15.6",
+    "babel-loader": "^8.2.2",
+    "nodemon": "^2.0.15"
+  }
+}
